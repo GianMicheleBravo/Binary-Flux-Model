@@ -7,7 +7,6 @@ A model to compute the flux of an eclipsing binary system at any time, at any wa
 - Optional step: use the code ```binary_flux_model.plot_eclipsing_binary_flux(2021, 4, 2024, 80, 1e-8, 0.2, 0.3, 15000, 12000)``` to produce the following plot:
 <img width="500" height="475" alt="demo_plot_2" src="https://github.com/user-attachments/assets/164e0cd4-8c6b-49dc-9f27-dc1be505fc14" />
 
-- Optional step: watch the demo video at https://github.com/GianMicheleBravo/Eclipsing-binary-model/blob/main/demo_video.mp4
 - Get the flux of using the ```binary_flux_model.eclipsing_binary_flux``` function.
 
 ## The model:
