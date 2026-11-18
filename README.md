@@ -9,8 +9,8 @@ A model to compute the flux of an eclipsing binary system at any time, at any wa
 
 - Get the flux of using the ```binary_flux_model.eclipsing_binary_flux``` function.
 
-## The model:
-The flux of an eclipsing binary system calculated as following:
+## Getting the flux:
+The flux of an eclipsing binary system is obtained as following:
 ```
 binary_flux_model.eclipsing_binary_flux(t, lambd, P, t0, i_deg, theta_max, f1, f2, T1, T2, spectrum_function_1=Planck_law, spectrum_function_2=Planck_law):
     """Return the light emitted by an eclipsing binary. 
@@ -60,7 +60,7 @@ binary_flux_model.eclipsing_binary_flux(t, lambd, P, t0, i_deg, theta_max, f1, f
         array([40906.9806891 , 17367.02548793, 40906.9806891 , 31138.02885213,
             40906.9806891 ])"""
 ```
-This is the single most important function of the package, as it gives you the flux, that you can compare directly to measured flux. For ease of use, any of its input parameters can be both scalars, lists or arrays, as long as the input have compatible shapes. In simple words, the model works as following:
+This is the single most important function of the package, as it gives you the flux, that you can compare directly to measurements. For ease of use, any of its input parameters (except for the spectral functions) can be both scalars, lists or arrays, as long as the input have compatible shapes. In simple words, the model works as following:
 1. The flux/solid angle is calculated for both objects in the binary for the input wavelength(s).
 2. The solid angle of both objects as visible from Earth is calculated for the input time(s).
 3. The visible solid angle of both objects is multiplied by their respective flux/solid angle to get the total flux of the system. 
