@@ -64,7 +64,8 @@ binary_flux_model.eclipsing_binary_flux(t, lambd, P, t0, i_deg, theta_max, f1, f
 This is the single most important function of the package, as it gives you the system's flux, that you can compare directly to measurements. For ease of use, any of its input parameters (except for the spectral functions) can be both scalars, lists or arrays, as long as the input have compatible shapes. In simple words, the model works as following:
 1. The flux/solid angle is calculated for both objects in the binary for the input wavelength(s) using ```spectrum_function_1``` and ```spectrum_function_2``` respectively. 
 2. The solid angle of both objects as visible from Earth is calculated for the input time(s).
-3. The visible solid angle of both objects is multiplied by their respective flux/solid angle to get the total flux of the system. 
+3. The visible solid angle of both objects is multiplied by their respective flux/solid angle to get the total flux of the system.
+ 
 This setup makes it possible for the model to compute both the SED (Spectral Energy Distribution) and light curve of an eclipsing binary system, for any time and wavelength.
 
 ### Changing the spectral models and units:
