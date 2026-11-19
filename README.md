@@ -1,4 +1,4 @@
-# Eclipsing-binary-model
+# Binary-Flux-Model
 A model to compute the flux of an eclipsing binary system at any time, at any wavelength. Optimized for speed and for a minimum number of free parameters, and suitable for detached systems without significant ellipsoidal stretching. Depending on the setup, this model can calculate the flux of 10⁴ - 10⁵ data points per second.
 
 ## Quick start guide:
