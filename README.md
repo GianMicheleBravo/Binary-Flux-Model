@@ -2,7 +2,7 @@
 A model to compute the flux of an eclipsing binary system at any time, at any wavelength. Optimized for speed and for a minimum number of free parameters, and suitable for detached systems without significant ellipsoidal stretching. Depending on the setup, this model can calculate the flux of 10⁴ - 10⁵ data points per second.
 
 ## Quick start guide:
-- Clone the repository to your machine, in any directory accessible by your scripts.
+- Clone the repository to your machine, in any directory accessible by your script.
 - Add the code ```import binary_flux_model``` into your script.
 - Optional step: use the code ```binary_flux_model.plot_eclipsing_binary_flux(2021, 4, 2024, 80, 1e-8, 0.2, 0.3, 15000, 12000)``` to produce the following plot:
 <img width="500" height="475" alt="demo_plot_2" src="https://github.com/user-attachments/assets/164e0cd4-8c6b-49dc-9f27-dc1be505fc14" />
@@ -10,8 +10,8 @@ A model to compute the flux of an eclipsing binary system at any time, at any wa
 - Optional step: watch the [demo animation on PCloud](https://e.pcloud.link/publink/show?code=XZ0UDV7ZUgMOIOyACMmB2UfngsbkUYGLLT3V#) which uses frames produced by the ```plot_eclipsing_binary_flux``` function.
 - Get the flux of using the ```binary_flux_model.eclipsing_binary_flux``` 
 
-## Getting the flux:
-The flux of an eclipsing binary system is obtained as following:
+## The eclipsing_binary_flux function:
+This function is used to calculate the flux of an eclipsing binary system.
 ```
 binary_flux_model.eclipsing_binary_flux(t, lambd, P, t0, i_deg, theta_max, f1, f2, T1, T2, spectrum_function_1=Planck_law, spectrum_function_2=Planck_law):
     """Return the light emitted by an eclipsing binary. 
@@ -96,6 +96,10 @@ Yes, that is a Gaussian function. Yes, it does not make sense. Yes, it uses 100 
 binary_flux_model.eclipsing_binary_flux(t, lambd, P, t0, i_deg, theta_max, f1, f2, T1, T2, spectrum_function_1=new_spectral_function, spectrum_function_2=new_spectral_function)
 ```
 We now have an eclipsing star model that uses a new model spectra and has new input and output units. In this case, the input ```lambd``` needs to be in micrometers, the input ```theta_max``` needs to be in milliarcseconds (so that the solid angle calculations become in milliarseconds^2), and the input temperatures needs to be in Kelvin. The output flux is then in counts per second. If desired, ```spectrum_function_1``` and ```spectrum_function_2``` can be different functions, for example if the first object in the binary is a star and the second is a planet.
+
+## Plotting
+
+The ```binary_flux_model.plot_eclipsing_binary_flux``` function is included in this package to give a visual idea of a given binary system.
 
 
 ## Model assumptions:
