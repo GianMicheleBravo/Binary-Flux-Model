@@ -10,10 +10,10 @@ A model to compute the flux of an eclipsing binary system at any time, at any wa
 - Optional step: watch the [demo animation on PCloud](https://e.pcloud.link/publink/show?code=XZ0UDV7ZUgMOIOyACMmB2UfngsbkUYGLLT3V#) which uses frames produced by the ```plot_eclipsing_binary_flux``` function.
 - Get the flux of using the ```binary_flux_model.eclipsing_binary_flux``` 
 
-## The eclipsing_binary_flux function:
+## The flux:
 This function is used to calculate the flux of an eclipsing binary system.
 ```
-binary_flux_model.eclipsing_binary_flux(t, lambd, P, t0, i_deg, theta_max, f1, f2, T1, T2, spectrum_function_1=Planck_law, spectrum_function_2=Planck_law):
+eclipsing_binary_flux(t, lambd, P, t0, i_deg, theta_max, f1, f2, T1, T2, spectrum_function_1=Planck_law, spectrum_function_2=Planck_law):
     """Return the light emitted by an eclipsing binary. 
         This model assumes the objects as uniform, opaque spheres in a circular orbit.
     Input:
@@ -69,6 +69,7 @@ This is the single most important function of the package, as it gives you the s
 This setup makes it possible for the model to compute both the SED (Spectral Energy Distribution) and light curve of an eclipsing binary system, for any time and wavelength.
 
 ### Changing the spectral models and units:
+
 By default, the model uses the following units:
 - ```t```: any time unit
 - ```lambd```: nanometers
@@ -100,6 +101,45 @@ We now have an eclipsing star model that uses a new model spectra and has new in
 ## Plotting
 
 The ```binary_flux_model.plot_eclipsing_binary_flux``` function is included in this package to give a visual idea of a given binary system.
+```
+plot_eclipsing_binary_flux(t, P, t0, i_deg, theta_max, f1, f2, T1, T2, spectrum_function_1=Planck_law, spectrum_function_2=Planck_law, lambd_red=700, lambd_green=550, lambd_blue=400, show=True):
+    """Plots a binary system with given parameters at a given time.
+    Input:
+        t: the time at which to plot the system
+        P: period, larger than 0, same unit as t
+        t0: time of primary eclipse, same unit as t
+        theta_max: maximum projected separation angle of the binary, default in radians
+        i_deg: angle between the plane of the system and the line of sight, between 0 and 90 degrees
+        f1: the ratio between the primary radius and the binary distance, between 0 and 1
+        f2: the ratio between the secondary radius and the binary distance, between 0 and 
+        T1: temperature of the primary, default in K
+        T2: temperature of the secondary, default in K
+
+        spectrum_function_1: the function used to get flux of the primary:
+            spectrum_function_1(lambd, T) -> flux
+            Default: Planck_law:
+                lambd_nm, T_K -> flux in  W/(m^2 * nm * sr)
+
+        spectrum_function_2: the function used to get flux of the secondary:
+            spectrum_function_1(lambd, T) -> flux
+            Default: Planck_law:
+                lambd_nm, T_K -> flux in W/(m^2 * nm * sr)
+
+        lambd_red: the wavelength to use for the plot's red colour channel.
+            Defaut: 700 
+        lambd_green: the wavelength to use for the plot's green colour channel.
+            Defaut: 550
+        lambd_red: the wavelength to use for the plot's red colour channel.
+            Defaut: 400
+
+        show: whether to display the plot or return fig, axs
+            Default: True"""
+```
+Using this function is similar to using ```binary_flux_model.eclipsing_binary_flux``` (hence the similar names). One difference is that the plotting function only uses scalar inputs (it can only plot a single snapshot), and that it uses three wavelength inputs (```lambd_red```, ```lambd_green```, ```lambd_blue```), used for the Red, Green and Blue color channels displayed on the the plot. By default, these color channels are at 700, 550 and 400 nanometers, approximating the visible range of human beings. Since computer screens are (in most cases) unable to be as bright as stars, the colour channels are always normalized in the image: if the brighter primary emits 8 Janskys/stearadian in the red channel, 10 Janskys/stearadian in the green channel and 4 Janskys/stearadian in the blue channel, then the screen's red LEDs will be at 60% brightness, the green LEDs will be at 100% brightness and the blue LEDs will be at 40% brightness. This is shown in the top part of the plot.
+```>>> binary_flux_model.plot_eclipsing_binary_flux(0, 1, 0, 90, 1e-8, 0.2, 0.1, 3000, 2500)```
+<img width="500" height="475" alt="example_plot" src="https://github.com/user-attachments/assets/d45ef3b7-8ea3-49c3-88e4-9b5301f70c91" />
+
+
 
 
 ## Model assumptions:
